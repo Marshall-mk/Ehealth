@@ -1,0 +1,9 @@
+# Ignore all log files
+src/mlruns
+src/mlartifacts
+src/outputs
+src/__pycache__
+
+# Ignore large files 
+dataset/
+checkpoints/
