@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 from torchvision import transforms
 from omegaconf import OmegaConf
-from models import mobilenet_v1, mobilenet_v2, mobilenet_v3
+from models import mobilenet_v2, mobilenet_v3
 
 class ImagePredictor:
     def __init__(self, model, device, class_names):
@@ -14,7 +14,7 @@ class ImagePredictor:
         self.class_names = class_names
         self.transform = transforms.Compose([
             transforms.Resize(256),
-            transforms.CenterCrop(224),  # Adjust based on your model's input size
+            transforms.CenterCrop(224), 
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.6104, 0.5033, 0.4965], std=[0.2507, 0.2288, 0.2383]),
         ])
@@ -48,7 +48,6 @@ def main(cfg):
 
         # Load model
         model_classes = {
-            "mobilenet": mobilenet_v1,
             "mobilenetv2": mobilenet_v2,
             "mobilenetv3": mobilenet_v3
         }
@@ -71,7 +70,7 @@ def main(cfg):
         # Log results
         mlflow.log_metric("predicted_class", predicted_class)
         mlflow.log_metric("confidence", confidence)
-        mlflow.log_artifact(image_path)  # Log the image used for prediction
+        mlflow.log_artifact(image_path) 
 
         # Print results
         print(f"Predicted Class: {predictor.class_names[predicted_class]}")

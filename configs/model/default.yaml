@@ -2,6 +2,7 @@ name: Skin Analysis
 model_name: mobilenetv2
 checkpoint: null
 num_classes: 3
+eval_checkpoint: ../checkpoints/mobilenetv3_epoch_4.pth
 ckpt_path: checkpoints/
 history_path: metrics/
 train_data_path: dataset/train/

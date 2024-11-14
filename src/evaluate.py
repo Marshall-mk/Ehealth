@@ -24,7 +24,7 @@ class ModelEvaluator:
         self.model = model
         self.device = device
         self.class_names = class_names
-        self.output_dir = Path("../evaluation_results")
+        self.output_dir = Path("../metrics")
         self.output_dir.mkdir(exist_ok=True)
 
     @torch.no_grad()
@@ -162,7 +162,7 @@ class ModelEvaluator:
             f.write(classification_report(y_true, y_pred, target_names=self.class_names))
         mlflow.log_artifact(report_path)
 
-@hydra.main(config_path="../configs", config_name="config")
+@hydra.main(config_path="../configs", config_name="config", version_base="1.2")
 def main(cfg):
     # Set up MLflow
     mlflow.set_tracking_uri(cfg.mlflow.tracking_uri)
@@ -178,7 +178,7 @@ def main(cfg):
         # Initialize data module and get test dataloader
         data_module = SkinLesionDataModule(cfg)
         data_module.setup()
-        test_loader = data_module.get_test_dataloader()  # You'll need to add this method to your DataModule
+        test_loader = data_module.get_test_dataloader() 
         
         # Load model
         model_classes = {
@@ -187,11 +187,12 @@ def main(cfg):
         }
         
         model_class = model_classes.get(cfg.model.model_name)
+        print('model_class:', model_class)
         if model_class is None:
             raise ValueError(f"Unknown model: {cfg.model.model_name}")
         
         model = model_class(output=len(data_module.class_names))
-        model.load_state_dict(torch.load(cfg.evaluation.model_path))
+        model.load_state_dict(torch.load(cfg.model.eval_checkpoint))
         model = model.to(device)
         
         # Initialize evaluator
