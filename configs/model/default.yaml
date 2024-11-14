@@ -1,0 +1,10 @@
+name: Skin Analysis
+model_name: mobilenetv2
+checkpoint: null
+num_classes: 3
+ckpt_path: checkpoints/
+history_path: metrics/
+train_data_path: dataset/train/
+val_data_path: dataset/val/
+test_data_path: dataset/test/
+image_size: 224
