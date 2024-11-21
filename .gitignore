@@ -5,6 +5,5 @@ src/outputs
 src/__pycache__
 
 # Ignore large files 
-dataset/
 checkpoints/
 metrics/
