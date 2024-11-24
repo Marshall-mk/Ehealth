@@ -9,13 +9,13 @@ project/
 ├── data/                # Directory for storing datasets.
 ├── notebooks/           # Jupyter notebooks for experimentation and exploration.
 ├── src/                 # Source folder for all Python scripts.
-│   ├── data             # Script for data loading and processing.
-│   ├── train            # Script for training models (could be called main)
-|   ├── trainer          # Script containing the custom training functions.
-│   ├── models           # Script containing the model architectures.
-│   └── utils            # Utility script and helper functions.
+│   ├── data.py          # Script for data loading and processing.
+│   ├── train.py         # Script for training models (could be called main)
+|   ├── trainer.py       # Script containing the custom training functions.
+│   ├── models.py        # Script containing the model architectures.
+│   └── utils.py         # Utility script and helper functions.
 ├── requirements.txt     # Project dependencies.
-├── configs/              # Configurations for model parameters, data paths, and experiments.
+├── configs/             # Configurations for model parameters, data paths, and experiments.
 └── README.md            # Project documentation (this file).
 ```
 
@@ -47,9 +47,6 @@ Ensure you have the following installed:
 ### Initial Exploration
 1. **Navigate to the notebooks directory**:
    The `notebooks/` folder contains Jupyter notebooks where you can start your exploration and experimentation.
-   ```bash
-   jupyter notebook
-   ```
 2. Open the `intructions.ipynb` to continue the experiments.
 
 ## Additional Resources
