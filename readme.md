@@ -30,7 +30,7 @@ Ensure you have the following installed:
 ### Setting Up the Environment
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Marshall-mk/Ehealth-Tutorial
+   git clone https://github.com/Marshall-mk/Ehealth
    cd Ehealth-Tutorial
    ```
 2. **Create a virtual environment** (recommended):
